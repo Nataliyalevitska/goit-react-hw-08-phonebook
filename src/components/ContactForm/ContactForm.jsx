@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import {
   PhoneLabel,
@@ -77,3 +78,7 @@ class ContactForm extends Component {
 }
 
 export default ContactForm;
+ContactForm.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+};
