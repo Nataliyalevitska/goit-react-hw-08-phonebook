@@ -4,7 +4,6 @@ import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
 import '../../styles/index.css';
-import PropTypes from 'prop-types';
 import { Title } from '../Phonebook/Phonebook.styled';
 import * as storage from '../../services/localStorage';
 
@@ -71,10 +70,6 @@ class Phonebook extends React.Component {
 }
 
 export default Phonebook;
-Phonebook.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
-};
 
 // componentDidMount() {
 //   const contacts = localStorage.getItem('contacts')
