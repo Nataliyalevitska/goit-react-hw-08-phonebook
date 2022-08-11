@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+// import { saveContact } from 'redux/contact-actions';
+import contactsAction from "../../redux/contacts";
 import { nanoid } from 'nanoid';
 import {
   PhoneLabel,
@@ -11,12 +14,39 @@ import {
 const ContactForm = ({ allContacts, onSubmit }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const dispatch = useDispatch();
+  const { createContacts } = contactsAction.actions;
+
+
+  //  const handelChange = e => {
+  //   const { name, value } = e.target;
+
+  //   switch (name) {
+  //     case 'name':
+  //       setName(value);
+  //       break;
+  //     case 'number':
+  //       setNumber(value);
+  //       break;
+  //     default:
+  //       throw new Error('Error');
+  //   }
+  // };
+
+  // const handelSaveContact = e => {
+  //   e.preventDefault();
+  //   dispatch(saveContact({ name, number }));
+  //   setName('');
+  //   setNumber('');
+  // };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const isDuplicate = (allContacts) => allContacts.name === name;
     allContacts.some(isDuplicate) ? toast.error(`${name} already exist in your contacts!`)
-      : onSubmit({ name, number, id: nanoid(3) });
+    : dispatch(createContacts({ name, number, id: nanoid(3) }));
+      // : onSubmit({ name, number, id: nanoid(3) });
     reset();
   };
 

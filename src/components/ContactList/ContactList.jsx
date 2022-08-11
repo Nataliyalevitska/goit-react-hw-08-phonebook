@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import contactsAction from "../../redux/contacts";
+
 import PropTypes from 'prop-types';
 import {
   ContactsItems,
@@ -7,7 +10,10 @@ import {
   ItemWrap,
 } from './ContactList.styled';
 
-const ContactList = ({ lists, onDeleteContact }) => {
+const ContactList = ({ lists, onClick }) => {
+  const dispatch = useDispatch();
+   const {  deleteContacts } = contactsAction.actions;
+
   return (
     <>
       <ContactsItems>
@@ -18,7 +24,7 @@ const ContactList = ({ lists, onDeleteContact }) => {
               <ButtonContact
                 type="button"
                 id={id}
-                onClick={() => onDeleteContact(id)}
+                onClick={(e) => dispatch(deleteContacts(id))}
               >
                 delete
               </ButtonContact>
