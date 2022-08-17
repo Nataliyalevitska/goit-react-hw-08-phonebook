@@ -1,18 +1,15 @@
 .switcher {
   display: flex;
 }
-.btn {
-  margin-right: 10px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 
-}
-.active {
-  margin-right: 10px;
+.btn {
+  margin-right: 20px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
-  width: 60px;
-  
+    cursor: pointer;;
+}
+
+.active {
+  composes: btn;
+  width: 40px;
 }

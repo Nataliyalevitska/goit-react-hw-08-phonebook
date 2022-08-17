@@ -16,7 +16,7 @@ const Phonebook = () => {
   const contacts = useSelector((state) => state.contacts.items);
   const filter = useSelector((state) => state.contacts.filter);
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
   const { deleteContacts } = contactsAction.actions;
 
   const handleDelete = (id) => {
@@ -31,7 +31,7 @@ const Phonebook = () => {
 
     return (
       <>
-        <Title>{t("phonebook.title")}</Title>
+        <Title> {i18n.t("phonebook.title")}</Title>
         <ContactForm allContacts={contacts} />
         <Title>{t("phonebook.subtitle")}</Title>
         <Filter />
