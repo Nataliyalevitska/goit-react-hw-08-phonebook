@@ -1,7 +1,7 @@
-// import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import contactsAction from "../../redux/contacts";
-// import { useLocalStorage } from "react-use";
+import { useTranslation } from "react-i18next";
+
 import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
@@ -10,19 +10,16 @@ import "react-toastify/dist/ReactToastify.css";
 import '../../styles/index.css';
 import { Title } from '../Phonebook/Phonebook.styled';
 
-// const STORAGE_KEY = 'contacts';
 
 const Phonebook = () => {
-  // const [contacts, setContacts] = useLocalStorage(STORAGE_KEY, []);
-  // const [filter, setFilter] = useState("");
+ 
   const contacts = useSelector((state) => state.contacts.items);
   const filter = useSelector((state) => state.contacts.filter);
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const { deleteContacts } = contactsAction.actions;
 
   const handleDelete = (id) => {
-    // setContacts(contacts.filter((contact) => contact.id !== ev.target.id));
     dispatch(deleteContacts(id));
   };
 
@@ -31,25 +28,12 @@ const Phonebook = () => {
       el.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
-  // const handleCreate = (newContact) => {
-  //   setContacts([...contacts, newContact]);
-  // };
-
-  // const handleDelete = id => {
-  //   setContacts(contacts.filter((contact) => contact.id !== id));
-  // };
-
-  // const handleFilter = (value) => setFilter(value);
-  // const getFilter = () => {
-  //   return contacts.filter((el) => el.name.toLowerCase().includes(filter.toLowerCase()));
-    
-  // };
 
     return (
       <>
-        <Title>Phonebook</Title>
+        <Title>{t("phonebook.title")}</Title>
         <ContactForm allContacts={contacts} />
-        <Title>Contacts</Title>
+        <Title>{t("phonebook.subtitle")}</Title>
         <Filter />
         <ContactList lists={getFilter()} onDeleteContact={handleDelete} />
         <ToastContainer position="top-center" autoClose={3000}  theme="colored"/>
