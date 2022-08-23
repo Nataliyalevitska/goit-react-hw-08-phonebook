@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import contactsAction from "../../redux/contacts";
+import { useEffect } from "react";
+// import contactsAction from "../../redux/contacts";
+import * as contactsOperations from "../../redux/contacts/contactsOperation";
 import { useTranslation } from "react-i18next";
 
 import ContactForm from '../ContactForm/ContactForm';
@@ -10,15 +12,19 @@ import "react-toastify/dist/ReactToastify.css";
 import '../../styles/index.css';
 import { Title } from '../Phonebook/Phonebook.styled';
 
+const { getContact, deleteContacts } = contactsOperations;
 
 const Phonebook = () => {
  
-  const contacts = useSelector((state) => state.contacts.items);
+  const contacts = useSelector((state) => state.contacts.data.items);
   const filter = useSelector((state) => state.contacts.filter);
   const dispatch = useDispatch();
-  const { t,i18n } = useTranslation();
-  const { deleteContacts } = contactsAction.actions;
-
+  const { t } = useTranslation();
+  // const { deleteContacts } = contactsAction.actions;
+ useEffect(() => {
+    dispatch(getContact());
+ }, [dispatch]);
+  
   const handleDelete = (id) => {
     dispatch(deleteContacts(id));
   };
@@ -31,7 +37,7 @@ const Phonebook = () => {
 
     return (
       <>
-        <Title> {i18n.t("phonebook.title")}</Title>
+        <Title> {t("phonebook.title")}</Title>
         <ContactForm allContacts={contacts} />
         <Title>{t("phonebook.subtitle")}</Title>
         <Filter />

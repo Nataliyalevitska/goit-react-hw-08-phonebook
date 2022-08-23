@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import contactsAction from "../../redux/contacts";
+// import contactsAction from "../../redux/contacts";
+import * as contactsOperations from "../../redux/contacts/contactsOperation";
 import { useTranslation } from "react-i18next";
 
 import PropTypes from 'prop-types';
@@ -13,8 +14,9 @@ import {
 
 const ContactList = ({ lists, onClick }) => {
   const dispatch = useDispatch();
-  const { deleteContacts } = contactsAction.actions;
+  // const { deleteContacts } = contactsAction.actions;
   const { t } = useTranslation();
+  const { deleteContacts } = contactsOperations;
 
   return (
     <>

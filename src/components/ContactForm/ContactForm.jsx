@@ -2,7 +2,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import contactsAction from "../../redux/contacts";
+import * as contactsOperations from "../../redux/contacts/contactsOperation";
+// import contactsAction from "../../redux/contacts";
 import { nanoid } from 'nanoid';
 import {
   PhoneLabel,
@@ -16,7 +17,8 @@ const ContactForm = ({ allContacts, onSubmit }) => {
   const [number, setNumber] = useState("");
   const dispatch = useDispatch();
    const { t } = useTranslation();
-  const { createContacts } = contactsAction.actions;
+  // const { createContacts } = contactsAction.actions;
+   const { createContacts } = contactsOperations;
 
 
   const handleSubmit = (e) => {
