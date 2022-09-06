@@ -14,7 +14,7 @@ import contactsReducer from './contacts/contactsSlice';
 import { customMiddlewareLogger } from './middlewear/logger';
 import { authReducer } from './auth'; //состояние пользователя
 
-const persistCitiesConfig = {
+const persistConfig = {
   key: 'filter',
   storage,
   whitelist: ['filter'],
