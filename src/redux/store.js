@@ -14,11 +14,11 @@ import contactsReducer from './contacts/contactsSlice';
 import { customMiddlewareLogger } from './middlewear/logger';
 import { authReducer } from './auth'; //состояние пользователя
 
-const persistConfig = {
-  key: 'filter',
-  storage,
-  whitelist: ['filter'],
-};
+// const persistConfig = {
+//   key: 'filter',
+//   storage,
+//   whitelist: ['filter'],
+// };
 
 const authPersistConfig = {
   key: 'auth',
