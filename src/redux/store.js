@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import contactsReducer from './contacts/contactsSlice';
 import { customMiddlewareLogger } from './middlewear/logger';
-import { authReducer } from './auth'; //состояние нашего пользователя
+import { authReducer } from './auth'; //состояние пользователя
 
 const persistCitiesConfig = {
   key: 'filter',
