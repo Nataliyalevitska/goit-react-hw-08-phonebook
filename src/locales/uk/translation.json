@@ -1,20 +1,50 @@
 {
-  "phonebook": {
+  "header": {
+    "homeLink": "Головна",
+    "contactsLink": "Контакти",
+    "registerLink": "Реєстрація"
+  },
+  "homePage": {
+    "message": "Вітальна сторінка нашого сервісу"
+  },
+  "logInForm": {
+    "title": "Сторіка логіна",
+    "emaileTitle": "Пошта*",
+    "emailePlaceholder": "приклад: email@email.com",
+    "passwordTitle": "Пароль*",
+    "passwordPlaceholder": "приклад: qwe1234",
+    "button": "Увійти"
+  },
+  "logUpForm": {
+    "name": "Ім'я*",
+    "placeholderName": "приклад: Наталия",
+    "title": "Сторіка логіна",
+    "emaileTitle": "Пошта*",
+    "emailePlaceholder": "приклад: email@email.com",
+    "passwordTitle": "Пароль*",
+    "passwordPlaceholder": "приклад: qwe1234",
+    "button": "Зареєструватись"
+  },
+  "app": {
     "title": "Телефонна книга",
-    "subtitle": "Список контактів"
+    "subtitle": "Контакти:",
+    "message": "Немає збережених контактів"
   },
   "contactForm": {
-    "label": "Прізвище та імʼя",
-    "placeholder": "Введи імʼя нового контакту",
-    "labelNum": "Моб. номер",
-    "placeholderNum": "Додай, номер контакта",
-    "button": "Додати контакт"
-  },
-  "filter": {
-    "p": "Пошук по імені",
-    "filterPlaceholder": "Почни вводити імʼя"
+    "name": "Ім'я:",
+    "placeholderName": "приклад: Левицька Наталія",
+    "number": "Телефонний номер:",
+    "placeholderNumber": "приклад: +38(099)205-33-33",
+    "btn": "Додати"
   },
   "contactList": {
-    "delete": "видалити"
+    "btn": "Видалити"
+  },
+  "filter": {
+    "message": "Знайти контакт за ім'ям",
+    "placeholder": "приклад: Нiнa"
+  },
+  "toast": {
+    "isInContacts": "Це ім’я вже є у вашому списку!"
   }
 }

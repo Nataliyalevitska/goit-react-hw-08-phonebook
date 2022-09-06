@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createLogger } from 'redux-logger';
 import {
   persistStore,
   persistReducer,
@@ -11,36 +10,37 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import contactsAction from './contacts';
+import contactsReducer from './contacts/contactsSlice';
+import { customMiddlewareLogger } from './middlewear/logger';
+import { authReducer } from './auth'; //состояние нашего пользователя
 
-// const rootReducer = combineReducers({
-//   contacts: contactsReducer,
-// });
-// const store = createStore(rootReducer, devToolsEnhancer());
-const persistConfig = {
-  key: 'contact',
+const persistCitiesConfig = {
+  key: 'filter',
   storage,
-  blacklist: ['filter'],
-  whitelist: ['items'],
+  whitelist: ['filter'],
 };
 
-const logger = createLogger({
-  collapsed: (getState, action, logEntry) => !logEntry.error,
-  timestamp: false,
-});
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 const store = configureStore({
   reducer: {
-    contacts: persistReducer(persistConfig, contactsAction.reducer),
+    contacts: contactsReducer,
+    // contacts: persistReducer(persistCitiesConfig, contactsReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(logger),
+    }).concat(customMiddlewareLogger),
   devTools: process.env.NODE_ENV !== 'production',
 });
+
 const persistor = persistStore(store);
 
 export { store, persistor };

@@ -1,0 +1,19 @@
+.container {
+    display: inline-block;
+    padding-bottom: 20px;
+    /* outline: solid red 1px; */
+}
+
+.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0 10px 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffeef2;
+}
+
+.activeLink {
+    color: #2f2b2b;
+    composes: link;
+}

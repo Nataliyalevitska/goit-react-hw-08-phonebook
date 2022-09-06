@@ -1,0 +1,50 @@
+{
+  "homePage": {
+    "message": "Приветственная страница нашего сервиса"
+  },
+  "header": {
+    "homeLink": "Главная",
+    "contactsLink": "Контакты",
+    "registerLink": "Регистрация"
+  },
+  "logInForm": {
+    "title": "Страница логина",
+    "emaileTitle": "Почта*",
+    "emailePlaceholder": "пример: email@email.com",
+    "passwordTitle": "Пароль*",
+    "passwordPlaceholder": "пример qwe1234",
+    "button": "Войти"
+  },
+  "logUpForm": {
+    "name": "Имя*",
+    "placeholderName": "пример: Наталия",
+    "title": "Страница регистрации",
+    "emaileTitle": "Почта*",
+    "emailePlaceholder": "пример: email@email.com",
+    "passwordTitle": "Пароль*",
+    "passwordPlaceholder": "пример qwe1234",
+    "button": "Зарегистрироваться"
+  },
+  "app": {
+    "title": "Телефонная книга",
+    "subtitle": "Контакты:",
+    "message": "У вас нет сохраненных контактов"
+  },
+  "contactForm": {
+    "name": "Имя:",
+    "placeholderName": "пример: Левицкая Наталия",
+    "number": "Телефонный номер:",
+    "placeholderNumber": "пример: +38(099)205-33-33",
+    "btn": "Добавить"
+  },
+  "contactList": {
+    "btn": "Удалить"
+  },
+  "filter": {
+    "message": "Найти контакты по имени",
+    "placeholder": "пример: Нина"
+  },
+  "toast": {
+    "isInContacts": "Это имя уже есть в вашем списке!"
+  }
+}

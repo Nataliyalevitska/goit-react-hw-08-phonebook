@@ -1,54 +1,67 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-// import contactsAction from "../../redux/contacts";
-import * as contactsOperations from "../../redux/contacts/contactsOperation";
-import { useTranslation } from "react-i18next";
+import { useContext, useEffect} from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { contactsActions, contactsOperations, contactsSelectors } from 'redux/contacts';
+import { ThemeContext, themes } from 'context/themeContext';
+import Paper from 'components/common/Paper/Paper';
+import s from './ContactList.module.css';
 
-import PropTypes from 'prop-types';
-import {
-  ContactsItems,
-  ContactsLi,
-  ButtonContact,
-  ItemWrap,
-} from './ContactList.styled';
-
-const ContactList = ({ lists, onClick }) => {
+const ContactList = () => {
+  const filteredContacts = useSelector(contactsSelectors.getFilteredContacts);
   const dispatch = useDispatch();
-  // const { deleteContacts } = contactsAction.actions;
+  
+  const { theme } = useContext(ThemeContext);
+  
   const { t } = useTranslation();
-  const { deleteContacts } = contactsOperations;
+
+  useEffect(() => {
+    dispatch(contactsOperations.getContacts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (filteredContacts.length === 0) {
+      
+      dispatch(contactsActions.changeFilter('')); 
+    }
+  
+  }, [filteredContacts.length, dispatch]);
 
   return (
-    <>
-      <ContactsItems>
-        {lists.map(({ name, number, id }) => (
-          <ContactsLi key={id}>
-            <ItemWrap>
-              {name}: {number}
-              <ButtonContact
-                type="button"
-                id={id}
-                onClick={(e) => dispatch(deleteContacts(id))}
-              >
-                {t("contactList.delete")}
-              </ButtonContact>
-            </ItemWrap>
-          </ContactsLi>
-        ))}
-      </ContactsItems>
-    </>
+  
+    <ul className={s.contactList}>
+      {filteredContacts.map(({ id, name, number }) => (
+        <Paper key={id}>
+          <li className={s.contactListItem}>
+            <p
+              className={
+                theme === themes.light
+                  ? s.lightContactTitle
+                  : s.darkContactTitle
+              }
+            >
+              {name}:
+            </p>
+            <p
+              className={
+                theme === themes.light
+                  ? s.lightContactTitle
+                  : s.darkContactTitle
+              }
+            >
+              {number}
+            </p>
+          </li>
+          <button
+            type="button"
+            className={s.deleteBtn}
+            onClick={()=> dispatch(contactsOperations.deleteContact(id))} 
+          >
+            {t('contactList.btn')}
+          </button>
+        </Paper>
+      ))}
+    </ul>
   );
-};
-
-ContactList.propTypes = {
-  lists: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactList;

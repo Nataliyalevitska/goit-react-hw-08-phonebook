@@ -1,20 +1,50 @@
 {
-  "phonebook": {
-    "title": "Phone book",
-    "subtitle": "Contacts list"
+  "header": {
+    "homeLink": "Home",
+    "contactsLink": "Contacts",
+    "registerLink": "Log Up"
+  },
+  "homePage": {
+    "message": "Welcome page of our service"
+  },
+  "logInForm": {
+    "title": "Log In Page",
+    "emaileTitle": "Email*",
+    "emailePlaceholder": "example: email@email.com",
+    "passwordTitle": "Password*",
+    "passwordPlaceholder": "example: qwe1234",
+    "button": "Log In"
+  },
+  "logUpForm": {
+    "name": "Name*",
+    "placeholderName": "example: Natalia",
+    "title": "Log Up Page",
+    "emaileTitle": "Email*",
+    "emailePlaceholder": "example: email@email.com",
+    "passwordTitle": "Password*",
+    "passwordPlaceholder": "example: qwe1234",
+    "button": "Log Up"
+  },
+  "app": {
+    "title": "Phonebook",
+    "subtitle": "Contacts:",
+    "message": "There are not contacts yet"
   },
   "contactForm": {
-    "label": "Name and surname",
-    "placeholder": "Type name a new contact",
-    "labelNum": "Tel. number",
-    "placeholderNum": "Add, number contact",
-    "button": "Add contact"
-  },
-  "filter": {
-    "p": "Search by name",
-    "filterPlaceholder": "Start type name"
+    "name": "Name:",
+    "placeholderName": "example: Levytska Natalia",
+    "number": "Number:",
+    "placeholderNumber": "example: +38(099)205-33-33",
+    "btn": "Add Contact"
   },
   "contactList": {
-    "delete": "delete"
+    "btn": "Delete"
+  },
+  "filter": {
+    "message": "Find contacts by name",
+    "placeholder": "example: Nina"
+  },
+  "toast": {
+    "isInContacts": "This name is already on your list!"
   }
 }

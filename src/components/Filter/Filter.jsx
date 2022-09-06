@@ -1,33 +1,48 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { TitleFilter, InputFilter } from './Filter.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from "react-i18next";
-import contactsAction from "../../redux/contacts";
+import { useEffect, useRef, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux'; 
+import { contactsActions, contactsSelectors } from 'redux/contacts';
+import { ThemeContext, themes } from 'context/themeContext';
+import { useTranslation } from 'react-i18next';
+import s from './Filter.module.css';
 
 const Filter = () => {
-  const filter = useSelector((state) => state.contacts.filter);
+  const filter = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
+
+  const { theme } = useContext(ThemeContext);
+
+  const inputRef = useRef(null);
+
   const { t } = useTranslation();
-  const { changeFilter } = contactsAction.actions;
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+  
   return (
-    <>
-      <TitleFilter>{t("filter.p")}</TitleFilter>
-      <InputFilter
-        type="text"
-        name="filter"
-        value={filter}
-        placeholder={t("filter.filterPlaceholder")}
-        onChange={(e) => dispatch(changeFilter(e.target.value))}
-      />
-    </>
+    <div>
+      <label className={s.label}>
+        <span
+          className={
+            theme === themes.light ? s.lightThemeTitle : s.darkThemeTitle
+          }
+        >
+          {t('filter.message')}
+        </span>
+        <input
+          ref={inputRef}
+          className={
+            theme === themes.light ? s.lightTextField : s.darkTextField
+          }
+          type="text"
+          name="filter"
+          value={filter}
+          onChange={e => dispatch(contactsActions.changeFilter(e.target.value))}     
+          placeholder={t('filter.placeholder')}
+        />
+      </label>
+    </div>
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
 };
 
 export default Filter;
