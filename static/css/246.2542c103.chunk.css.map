@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/246.2542c103.chunk.css","mappings":"AAAA,+BACI,aACJ","sources":["views/NotFoundView/NotFoundView.module.css"],"sourcesContent":[".errorPage {\n    margin: 0 auto;\n}"],"names":[],"sourceRoot":""}
